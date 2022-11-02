@@ -2,13 +2,15 @@ version: "2.2"
 services:
   jobmanager:
     image: flink:1.13.6-scala_2.11-java8
-    ports:
+    ports:    
     - "8081:8081"
     command: jobmanager
     environment:
     - |
       FLINK_PROPERTIES=
       jobmanager.rpc.address: jobmanager
+      jobmanager.memory.process.size: 5600m
+
 
   taskmanager:
     image: flink:1.13.6-scala_2.11-java8
@@ -18,6 +20,7 @@ services:
     scale: 1
     environment:
     - |
-      LINK_PROPERTIES=
+      FLINK_PROPERTIES=
       jobmanager.rpc.address: jobmanager
       taskmanager.numberOfTaskSlots: 2
+      taskmanager.memory.process.size: 5728m
