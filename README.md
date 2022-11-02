@@ -13,3 +13,7 @@ sudo docker exec -it  tm-id  /bin/bash
  ./bin/flink run ./examples/streaming/WordCount.jar  --output worldcount.txt
 
  cat worldcount.txt
+
+
+5. 内存调优
+https://nightlies.apache.org/flink/flink-docs-master/zh/docs/deployment/memory/mem_setup/

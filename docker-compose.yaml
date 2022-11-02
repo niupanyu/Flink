@@ -9,7 +9,9 @@ services:
     - |
       FLINK_PROPERTIES=
       jobmanager.rpc.address: jobmanager
-      jobmanager.memory.process.size: 5600m
+      jobmanager.memory.process.size: 2048m
+    volumes:
+      - ./jobs:/opt/flink/jobs
 
 
   taskmanager:
@@ -17,10 +19,10 @@ services:
     depends_on:
     - jobmanager
     command: taskmanager
-    scale: 1
+    scale: 2
     environment:
     - |
       FLINK_PROPERTIES=
       jobmanager.rpc.address: jobmanager
       taskmanager.numberOfTaskSlots: 2
-      taskmanager.memory.process.size: 5728m
+      taskmanager.memory.process.size: 2048m
